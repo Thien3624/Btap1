@@ -110,7 +110,7 @@ public class UserDaoImpl implements IUserDAO{
 	@Override
 	public boolean checkExistUsername(String username) {
 		boolean duplicate = false;
-		String query = "select * from [user] where username = " + username;
+		String query = "select * from [user] where username = ?";
 		try {
 			conn = new DBconnect().getConnection();
 			ps = conn.prepareStatement(query);
