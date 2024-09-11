@@ -19,7 +19,7 @@ public class UserDaoImpl implements IUserDAO{
 	}
 	@Override
 	public UserModel findByUserName(String username) {
-		String sql = "SELECT * FROM [User] WHERE username = " + username;
+		String sql = "SELECT * FROM [User] WHERE username = ?" ;
 		try {
 			conn = new DBconnect().getConnection();
 			ps = conn.prepareStatement(sql);
@@ -68,7 +68,7 @@ public class UserDaoImpl implements IUserDAO{
 	@Override
 	public boolean checkExistEmail(String email) {
 		boolean duplicate = false;
-		String query = "select * from [user] where email = " + email;
+		String query = "select * from [user] where email = ?" ;
 		try {
 			conn = new DBconnect().getConnection();
 			ps = conn.prepareStatement(query);
@@ -89,7 +89,7 @@ public class UserDaoImpl implements IUserDAO{
 	@Override
 	public boolean checkExistPhone(String phone) {
 		boolean duplicate = false;
-		String query = "select * from [user] where phone = " + phone;
+		String query = "select * from [user] where phone = ?";
 		try {
 			conn = new DBconnect().getConnection();
 			ps = conn.prepareStatement(query);
