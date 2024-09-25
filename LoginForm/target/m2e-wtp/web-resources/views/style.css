@@ -2,7 +2,6 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f7f6;
-    display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
@@ -16,6 +15,7 @@ body {
     padding: 2rem;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin: auto
 }
 
 h1 {
@@ -35,11 +35,6 @@ h1 {
     color: #555;
 }
 
-.form-check-label
-{
-	padding: 0.75rem 1.5rem;
-	margin-top: 20px;
-}
 
 .form-control {
     width: 100%;
@@ -115,3 +110,16 @@ h1 {
     margin-bottom: 10px; 
     font-weight: bold; /* Chữ đậm để nổi bật */
 }
+
+    .profile-info {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+    .profile-image img {
+        width: 200px;
+        height: 250px;
+        object-fit: cover;
+        border-radius: 10px;
+        margin-bottom: 20px;
+    }

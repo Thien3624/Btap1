@@ -16,7 +16,7 @@ public class UserDao {
 	public ResultSet rs = null;
 	public void registerUser(User user)
 	 {
-		 String INSERT_USER = "INSERT INTO users (username, email, fullname, password, phone, createdate ) VALUES (?,?,?,?,?,?)";
+		 String INSERT_USER = "INSERT INTO users (username, email, fullname, password, images, phone, createdate ) VALUES (?,?,?,?,?,?,?)";
 		 try {
 				conn = new DBConnectMySQL().getConnection();
 				ps = conn.prepareStatement(INSERT_USER);
@@ -24,8 +24,9 @@ public class UserDao {
 				ps.setString(2, user.getEmail());
 				ps.setString(3, user.getFullname());
 				ps.setString(4, user.getPassword());
-				ps.setString(5, user.getPhone());
-				ps.setDate(6,(Date)user.getCreatedDate());
+				ps.setString(5, user.getImages());
+				ps.setString(6, user.getPhone());
+				ps.setDate(7,(Date)user.getCreatedDate());
 				ps.executeUpdate();
 				}catch (Exception e) 
 				{
@@ -90,27 +91,20 @@ public class UserDao {
 				e.printStackTrace();	
 			}
 		return null;
-	}    
-	public static void main(String[] args) {
-        // Tạo đối tượng UserDao
-        UserDao userDao = new UserDao();
-        
-        // Tên người dùng để tìm kiếm
-        String usernameToFind = "duythien"; // Thay đổi theo tên người dùng bạn muốn kiểm tra
-        
-        // Gọi hàm findByUserName để lấy thông tin người dùng
-        User user = userDao.findByUserName(usernameToFind);
-        
-        // Kiểm tra kết quả
-        if (user != null) {
-            System.out.println("User found:");
-            System.out.println("Username: " + user.getUsername());
-            System.out.println("Email: " + user.getEmail());
-            System.out.println("Fullname: " + user.getFullname());
-            System.out.println("Phone: " + user.getPhone());
-            System.out.println("Created Date: " + user.getCreatedDate());
-        } else {
-            System.out.println("No user found with username: " + usernameToFind);
-        }
-    }
+	}
+	public void changeInformation(User user) {
+	    String UPDATE_USER = "UPDATE users SET fullname = ?, password = ?, images = ?, phone = ? WHERE username = ?";
+	    try {
+	        conn = new DBConnectMySQL().getConnection();
+	        ps = conn.prepareStatement(UPDATE_USER);
+	        ps.setString(1, user.getFullname());
+	        ps.setString(2, user.getPassword());
+	        ps.setString(3, user.getImages());
+	        ps.setString(4, user.getPhone());
+	        ps.setString(5, user.getUsername()); 
+	        ps.executeUpdate();
+	    } catch (Exception e) {
+	        e.printStackTrace();
+	    }
+	}
 }

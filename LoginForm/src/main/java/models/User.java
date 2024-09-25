@@ -39,6 +39,13 @@ public class User {
 		this.phone = phone;
 		this.createdDate = createdDate;
 	}
+	
+
+	@Override
+	public String toString() {
+		return "User [email=" + email + ", username=" + username + ", password=" + password + ", images=" + images
+				+ ", fullname=" + fullname + ", phone=" + phone + ", createdDate=" + createdDate + "]";
+	}
 
 	public String getEmail() {
 		return email;
